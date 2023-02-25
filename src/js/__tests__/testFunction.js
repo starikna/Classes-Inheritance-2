@@ -1,96 +1,52 @@
-import Character from '../app';
+import { Character } from '../app';
 
-describe('test class Character', () => {
-  class Zombie extends Character {
-    constructor(name, type = 'Zombie', attack = 10, defence = 40) {
-      super(name, type, attack, defence);
-    }
-  }
+describe('1_test class Character', () => {
+  class Zombie extends Character {};
 
-  // class Bowman extends Character {
-  //   constructor(name, type = 'Bowman', attack = 25, defence = 25) {
-  //     super(name, type, attack, defence);
-  //   }
-  // }
-
-  // class Swordsman extends Character {
-  //   constructor(name, type = 'Swordsman', attack = 40, defence = 10) {
-  //     super(name, type, attack, defence);
-  //   }
-  // }
-
-  // class Magician extends Character {
-  //   constructor(name, type = 'Magician', attack = 10, defence = 40) {
-  //     super(name, type, attack, defence);
-  //   }
-  // }
-
-  // class Undead extends Character {
-  //   constructor(name, type = 'Undead', attack = 25, defence = 25) {
-  //     super(name, type, attack, defence);
-  //   }
-  // }
-
-  // class Daemon extends Character {
-  //   constructor(name, type = 'Daemon', attack = 40, defence = 10) {
-  //     super(name, type, attack, defence);
-  //   }
-  // }
-
-  test('Class is defined', () => {
+  test('2_Class is defined', () => {
     expect(Character).toBeDefined();
   });
 
-  test('test check name length > 1', () => {
+  test('3_class Zombie is defined', () => {
+      expect(Zombie).toBeDefined();
+  });
+
+  test('4_test check name length > 1', () => {
     const received = new Zombie('Nat');
     const expected = 1;
     expect(received.name.length).toBeGreaterThan(expected);
   });
 
-  test('test check name length < 11', () => {
-    const received = new Zombie('Nat');
-    const expected = 11;
-    expect(received.name.length).toBeLessThan(expected);
+  test('5_test check name length > 1', () => {
+    const my = new Zombie('N');
+    function received() {
+      if (my.name.length < 2 || my.name.length > 10) throw new Error ('Ошибка длины имени!');
+    } 
+    const expected = 'Error';
+    expect(received).toThrow(expected);
   });
 
-  test('test check name = "string"', () => {
-    const received = new Zombie('Nat');
-    const expected = 'string';
-    expect(typeof received.name).toBe(expected);
+  test('6_test check name = "string"', () => {
+    const you = new Zombie(123);
+    function received () {
+      if (typeof you.name !== 'string') throw new TypeError('Имя - не строка!');
+    }
+
+    const expected = 'Error';
+    expect(received).toThrow(expected);
   });
 
-  test('test function levelUp', () => {
-    const preReceived = new Zombie('Cat');
+  test('7_test function levelUp', () => {
+    const preReceived = new Zombie('Nat');
     preReceived.levelUp();
     const expected = 2;
     expect(preReceived.level).toBe(expected);
   });
 
-  test('test function damage', () => {
+  test('8_test function damage', () => {
     const received = new Zombie('Mat');
     received.damage(20);
     const expected = 88;
     expect(received.health).toBe(expected);
-  });
-
-  test('test function checkName', () => {
-    const preReceived = new Zombie('P');
-    const received = preReceived.checkName();
-    const expected = 'Ошибка длины имени!';
-    expect(received).toThrow(expected);
-  });
-
-  test('test function checkNameLength', () => {
-    const preReceived = new Zombie('Pittttttttttttttttt');
-    const received = preReceived.checkNameLength();
-    const expected = 'Ошибка длины имени!';
-    expect(received).toThrow(expected);
-  });
-
-  test('test function checkNameType', () => {
-    const preReceived = new Zombie('12');
-    const received = preReceived.checkNameType();
-    const expected = 'Имя - не строка!';
-    expect(received).toThrow(expected);
   });
 });

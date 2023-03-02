@@ -1,4 +1,4 @@
-import Character from '../app';
+import { Character } from '../app';
 
 export class Zombie extends Character {
     constructor(name, type = 'Zombie') {

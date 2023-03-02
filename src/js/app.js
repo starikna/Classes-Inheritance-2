@@ -8,6 +8,10 @@ export class Character {
       throw new TypeError('Имя - не строка!');
     }
 
+    if (typeof type !== 'string') { 
+      throw new TypeError('Имя - не строка!');
+    }
+
     this.name = name;
     this.type = type;
     this.health = 100;

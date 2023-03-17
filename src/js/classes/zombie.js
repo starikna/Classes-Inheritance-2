@@ -1,6 +1,6 @@
-import { Character } from '../app';
+import Character from '../app';
 
-export class Zombie extends Character {
+export default class Zombie extends Character {
     constructor(name, type = 'Zombie') {
         super(name, type);
         this.attack = 10;

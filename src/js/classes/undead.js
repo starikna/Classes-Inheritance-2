@@ -1,6 +1,6 @@
 import Character from '../app';
 
-class Undead extends Character {
+export default class Undead extends Character {
     constructor(name, type = 'Undead') {
         super(name, type);
         this.attack = 25;
